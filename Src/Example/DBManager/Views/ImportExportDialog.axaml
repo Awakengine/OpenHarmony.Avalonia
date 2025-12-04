@@ -1,0 +1,75 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="400"
+        x:Class="DBManager.Views.ImportExportDialog"
+        Title="数据导入/导出" 
+        Width="500" Height="400"
+        WindowStartupLocation="CenterOwner">
+    <DockPanel Margin="10">
+        <TextBlock DockPanel.Dock="Top" Text="数据导入/导出" FontWeight="Bold" FontSize="16" Margin="0 0 0 10"/>
+        
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 10 0 0">
+            <Button Name="CancelButton" Content="取消" Width="80" Margin="0 0 10 0"/>
+            <Button Name="OkButton" Content="确定" Width="80"/>
+        </StackPanel>
+        
+        <TabControl>
+            <TabItem Header="导出数据">
+                <StackPanel Margin="10">
+                    <TextBlock Text="选择导出格式:" Margin="0 0 0 5"/>
+                    <ComboBox Name="ExportFormatComboBox" Margin="0 0 0 10">
+                        <ComboBoxItem Content="CSV" IsSelected="True"/>
+                        <ComboBoxItem Content="Excel"/>
+                        <ComboBoxItem Content="JSON"/>
+                        <ComboBoxItem Content="XML"/>
+                    </ComboBox>
+                    
+                    <TextBlock Text="选择导出位置:" Margin="0 0 0 5"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox Name="ExportPathTextBox" Grid.Column="0" Margin="0 0 5 0"/>
+                        <Button Name="BrowseExportPathButton" Grid.Column="1" Content="浏览..."/>
+                    </Grid>
+                    
+                    <CheckBox Name="IncludeHeadersCheckBox" Content="包含列标题" IsChecked="True" Margin="0 10 0 0"/>
+                </StackPanel>
+            </TabItem>
+            
+            <TabItem Header="导入数据">
+                <StackPanel Margin="10">
+                    <TextBlock Text="选择导入文件:" Margin="0 0 0 5"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox Name="ImportPathTextBox" Grid.Column="0" Margin="0 0 5 0"/>
+                        <Button Name="BrowseImportPathButton" Grid.Column="1" Content="浏览..."/>
+                    </Grid>
+                    
+                    <TextBlock Text="选择导入格式:" Margin="0 10 0 5"/>
+                    <ComboBox Name="ImportFormatComboBox" Margin="0 0 0 10">
+                        <ComboBoxItem Content="CSV" IsSelected="True"/>
+                        <ComboBoxItem Content="Excel"/>
+                        <ComboBoxItem Content="JSON"/>
+                        <ComboBoxItem Content="XML"/>
+                    </ComboBox>
+                    
+                    <CheckBox Name="FirstRowHeadersCheckBox" Content="第一行为列标题" IsChecked="True" Margin="0 0 0 10"/>
+                    
+                    <TextBlock Text="冲突处理:" Margin="0 0 0 5"/>
+                    <ComboBox Name="ConflictHandlingComboBox">
+                        <ComboBoxItem Content="跳过重复记录" IsSelected="True"/>
+                        <ComboBoxItem Content="覆盖现有记录"/>
+                        <ComboBoxItem Content="停止导入"/>
+                    </ComboBox>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+    </DockPanel>
+</Window>

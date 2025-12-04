@@ -1,0 +1,34 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
+             x:Class="DBManager.Views.QueryEditor">
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+            <Button Name="NewQueryButton" Content="新建查询" Margin="0 0 5 0"/>
+            <Button Name="OpenQueryButton" Content="打开查询" Margin="0 0 5 0"/>
+            <Button Name="SaveQueryButton" Content="保存查询" Margin="0 0 5 0"/>
+            <Button Name="ExecuteButton" Content="执行 (F5)" Margin="0 0 5 0"/>
+            <Button Name="ExecuteSelectionButton" Content="执行选定" Margin="0 0 5 0"/>
+            <Button Name="FormatButton" Content="格式化"/>
+        </StackPanel>
+        
+        <Grid DockPanel.Dock="Top" Height="200" Margin="0 5 0 0">
+            <TextBox Name="SqlTextBox" 
+                     Text="// 在此处输入SQL查询&#x0a;// 按F5执行查询" 
+                     AcceptsReturn="True" 
+                     TextWrapping="Wrap"
+                     FontFamily="Courier New"
+                     HorizontalAlignment="Stretch"
+                     VerticalAlignment="Stretch"/>
+        </Grid>
+        
+        <GridSplitter DockPanel.Dock="Top" Height="5" HorizontalAlignment="Stretch"/>
+        
+        <DataGrid Name="ResultsDataGrid" 
+                  AutoGenerateColumns="True" 
+                  DockPanel.Dock="Top"
+                  IsReadOnly="True"/>
+    </DockPanel>
+</UserControl>
